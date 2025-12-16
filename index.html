@@ -26,18 +26,27 @@
             <div class="navbar-content d-flex justify-content-between align-items-center w-100">
                 <a href="#hello" class="navbar-brand">AH</a>
                 
-                <ul class="nav-links d-flex gap-4 mb-0">
-                    <li><a href="#hello" class="active">Hello</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#achievements">Achievements</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                
-                <button class="email-btn">
-                    <i class="fas fa-envelope"></i>
-                    Email me
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
                 </button>
+                
+                <div class="nav-menu">
+                    <ul class="nav-links d-flex gap-4 mb-0">
+                        <li><a href="#hello" class="active">Hello</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    
+                    <button class="email-btn">
+                        <i class="fas fa-envelope"></i>
+                        Email me
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -77,10 +86,10 @@
                                     <span class="function">hello</span><span class="bracket">() {</span>
                                 </div>
                                 <div class="code-line">
-                                    <span class="keyword">  cout << </span> <span class="bracket">Hello, People! </span><span class="keyword"> << '\n'</span><span class="bracket">;</span>
+                                    <span class="keyword">  cout << </span> <span class="bracket"> "Hello, People!" </span><span class="keyword"> << '\n'</span><span class="bracket">;</span>
                                 </div>
                                 <div class="code-line">
-                                    <span class="keyword">    return 0;
+                                    <span class="keyword">    return;
                                 </div>
                                 <div class="code-line">
                                     <span class="bracket">}</span>
@@ -103,11 +112,11 @@
                             <div class="stats-body">
                                 <div class="stat-item">
                                     <div class="stat-label">Problems Solved</div>
-                                    <div class="stat-value">500+</div>
+                                    <div class="stat-value">700+</div>
                                 </div>
                                 <div class="stat-item">
                                     <div class="stat-label">Contest Rating</div>
-                                    <div class="stat-value">1850</div>
+                                    <div class="stat-value">1170</div>
                                 </div>
                                 <div class="stat-bar">
                                     <div class="stat-progress" style="width: 75%"></div>
@@ -124,11 +133,11 @@
                             <div class="tech-body">
                                 <div class="tech-tags">
                                     <span class="tech-tag">JavaScript</span>
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">JAVA</span>
+                                    <span class="tech-tag">Go</span>
                                     <span class="tech-tag">Python</span>
                                     <span class="tech-tag">C++</span>
-                                    <span class="tech-tag">MongoDB</span>
+                                    <span class="tech-tag">MySQL</span>
                                 </div>
                             </div>
                         </div>
@@ -162,21 +171,21 @@
                         <div class="skills-list">
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">JavaScript</span>
-                                    <span class="skill-percentage">90%</span>
+                                    <span class="skill-name">JAVA</span>
+                                    <span class="skill-percentage">70%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="90"></div>
+                                    <div class="skill-progress" data-progress="70"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">Python</span>
-                                    <span class="skill-percentage">85%</span>
+                                    <span class="skill-percentage">50%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="85"></div>
+                                    <div class="skill-progress" data-progress="50"></div>
                                 </div>
                             </div>
                             
@@ -192,21 +201,21 @@
                             
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">TypeScript</span>
-                                    <span class="skill-percentage">85%</span>
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-percentage">30%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="85"></div>
+                                    <div class="skill-progress" data-progress="30"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">Java</span>
-                                    <span class="skill-percentage">75%</span>
+                                    <span class="skill-name">GO</span>
+                                    <span class="skill-percentage">50%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="75"></div>
+                                    <div class="skill-progress" data-progress="50"></div>
                                 </div>
                             </div>
                         </div>
@@ -221,51 +230,51 @@
                         <div class="skills-list">
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">React.js</span>
-                                    <span class="skill-percentage">88%</span>
+                                    <span class="skill-name">JavaFx</span>
+                                    <span class="skill-percentage">60%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="88"></div>
+                                    <div class="skill-progress" data-progress="60"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">Node.js / Express</span>
-                                    <span class="skill-percentage">85%</span>
+                                    <span class="skill-name">SpringBoot</span>
+                                    <span class="skill-percentage">50%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="85"></div>
+                                    <div class="skill-progress" data-progress="50"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">Next.js</span>
-                                    <span class="skill-percentage">80%</span>
+                                    <span class="skill-name">XML</span>
+                                    <span class="skill-percentage">30%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="80"></div>
+                                    <div class="skill-progress" data-progress="30"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">Vue.js</span>
-                                    <span class="skill-percentage">70%</span>
+                                    <span class="skill-name">FXML</span>
+                                    <span class="skill-percentage">75%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="70"></div>
+                                    <div class="skill-progress" data-progress="75"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">Django / Flask</span>
-                                    <span class="skill-percentage">75%</span>
+                                    <span class="skill-percentage">20%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="75"></div>
+                                    <div class="skill-progress" data-progress="20"></div>
                                 </div>
                             </div>
                         </div>
@@ -280,7 +289,7 @@
                         <div class="skills-list">
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">MongoDB</span>
+                                    <span class="skill-name">MySQL</span>
                                     <span class="skill-percentage">85%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -290,11 +299,11 @@
                             
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">PostgreSQL / MySQL</span>
-                                    <span class="skill-percentage">80%</span>
+                                    <span class="skill-name">Maven</span>
+                                    <span class="skill-percentage">60%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="80"></div>
+                                    <div class="skill-progress" data-progress="60"></div>
                                 </div>
                             </div>
                             
@@ -311,10 +320,10 @@
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">Docker</span>
-                                    <span class="skill-percentage">70%</span>
+                                    <span class="skill-percentage">50%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="70"></div>
+                                    <div class="skill-progress" data-progress="50"></div>
                                 </div>
                             </div>
                         </div>
@@ -330,40 +339,40 @@
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">Data Structures & Algorithms</span>
-                                    <span class="skill-percentage">88%</span>
+                                    <span class="skill-percentage">70%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="88"></div>
+                                    <div class="skill-progress" data-progress="70"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">Competitive Programming</span>
-                                    <span class="skill-percentage">85%</span>
+                                    <span class="skill-percentage">70%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="85"></div>
+                                    <div class="skill-progress" data-progress="70"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">System Design</span>
-                                    <span class="skill-percentage">75%</span>
+                                    <span class="skill-percentage">50%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="75"></div>
+                                    <div class="skill-progress" data-progress="50"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-header">
                                     <span class="skill-name">API Development</span>
-                                    <span class="skill-percentage">85%</span>
+                                    <span class="skill-percentage">60%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="85"></div>
+                                    <div class="skill-progress" data-progress="60"></div>
                                 </div>
                             </div>
                         </div>
@@ -385,18 +394,18 @@
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/webmat.webp" alt="Web Mathematics App">
+                        <img src="assets/webmat.webp" alt="Web Matrics App">
                         <div class="project-overlay">
-                            <a href="#" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
+                            <a href="https://github.com/hamza-vuiyan/Web-Analyzer" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
                         </div>
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">Web Matrics</h3>
                         <p class="project-description">Interactive math learning platform with real-time problem solving</p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
+                            <span class="tag">JAVA</span>
+                            <span class="tag">SpringBoot</span>
+                            <span class="tag">MySQL</span>
                         </div>
                     </div>
                 </div>
@@ -406,16 +415,15 @@
                     <div class="project-image">
                         <img src="assets/crud.webp" alt="CRUD Application">
                         <div class="project-overlay">
-                            <a href="#" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
+                            <a href="https://github.com/hamza-vuiyan/Software-Engineering/tree/main/JDBC-CRUD" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
                         </div>
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">Full-Stack CRUD App</h3>
                         <p class="project-description">Complete data management system with authentication and authorization</p>
                         <div class="project-tags">
-                            <span class="tag">Express</span>
+                            <span class="tag">JAVA</span>
                             <span class="tag">MySQL</span>
-                            <span class="tag">Bootstrap</span>
                         </div>
                     </div>
                 </div>
@@ -425,16 +433,16 @@
                     <div class="project-image">
                         <img src="assets/quiz.png" alt="Quiz Application">
                         <div class="project-overlay">
-                            <a href="#" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
+                            <a href="https://github.com/hamza-vuiyan/QuizApp" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
                         </div>
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">Interactive Quiz App</h3>
                         <p class="project-description">Real-time quiz platform with scoring and leaderboard system</p>
                         <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaFx</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">FXML</span>
                         </div>
                     </div>
                 </div>
@@ -444,16 +452,16 @@
                     <div class="project-image">
                         <img src="assets/blog.webp" alt="Blog Platform">
                         <div class="project-overlay">
-                            <a href="#" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
+                            <a href="https://github.com/hamza-vuiyan/myBlog" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
                         </div>
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">Blog Platform</h3>
                         <p class="project-description">Modern blogging platform with markdown support and comments</p>
                         <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">SpringBoot</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Maven</span>
                         </div>
                     </div>
                 </div>
@@ -463,16 +471,16 @@
                     <div class="project-image">
                         <img src="assets/birthday_project.png" alt="Birthday Project">
                         <div class="project-overlay">
-                            <a href="#" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
+                            <a href="https://github.com/hamza-vuiyan/Happy-BrithDay" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
                         </div>
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">Birthday Reminder</h3>
                         <p class="project-description">Beautiful animated birthday reminder app with notifications</p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">CSS Animations</span>
-                            <span class="tag">API</span>
+                            <span class="tag">JAVA</span>
+                            <span class="tag">JavaFx</span>
+                            <span class="tag">MySQL</span>
                         </div>
                     </div>
                 </div>
@@ -482,16 +490,16 @@
                     <div class="project-image">
                         <img src="assets/doodle.webp" alt="Creative Doodle">
                         <div class="project-overlay">
-                            <a href="#" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
+                            <a href="https://github.com/hamza-vuiyan/DoodleJump" class="btn-view"><i class="fas fa-eye"></i> View Project</a>
                         </div>
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">Doodle Jump.</h3>
                         <p class="project-description">Interactive drawing application with real-time collaboration</p>
                         <div class="project-tags">
-                            <span class="tag">Canvas API</span>
-                            <span class="tag">WebSocket</span>
-                            <span class="tag">Vue.js</span>
+                            <span class="tag">JAVA</span>
+                            <span class="tag">JavaFx</span>
+                            <span class="tag">FXML</span>
                         </div>
                     </div>
                 </div>
@@ -616,7 +624,7 @@
                 <div class="row text-center">
                     <div class="col-md-3 col-6">
                         <div class="stat-box">
-                            <h3 class="stat-number" data-target="500">0</h3>
+                            <h3 class="stat-number" data-target="700">0</h3>
                             <p class="stat-label">Problems Solved</p>
                         </div>
                     </div>
@@ -635,7 +643,7 @@
                     <div class="col-md-3 col-6">
                         <div class="stat-box">
                             <h3 class="stat-number" data-target="5">0</h3>
-                            <p class="stat-label">Hackathons Won</p>
+                            <p class="stat-label">ICPC Contest</p>
                         </div>
                     </div>
                 </div>
@@ -695,10 +703,10 @@
                                 </div>
                                 
                                 <div class="social-links">
-                                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-codepen"></i></a>
+                                    <a href="https://github.com/hamza-vuiyan" class="social-link"><i class="fab fa-github"></i></a>
+                                    <a href="https://www.linkedin.com/in/amirhamzah19/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://x.com/hamza_vuiyan" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://codeforces.com/profile/Amir_Hamza19" class="social-link"><i class="fas fa-code"></i></a>
                                 </div>
                             </div>
                         </div>

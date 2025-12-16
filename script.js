@@ -1,9 +1,38 @@
+// ===== Mobile Menu Toggle =====
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+if (mobileMenuToggle && navMenu) {
+    mobileMenuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking on the overlay (the ::before pseudo-element area)
+    navMenu.addEventListener('click', function(e) {
+        if (e.target === navMenu) {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 // ===== Smooth Scrolling for Navigation Links =====
 document.querySelectorAll('.nav-links a, .footer-links a, a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href && href.startsWith('#') && href !== '#') {
             e.preventDefault();
+            
+            // Close mobile menu if open
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
             
             // Remove active class from all links
             document.querySelectorAll('.nav-links a').forEach(link => {
@@ -28,6 +57,17 @@ document.querySelectorAll('.nav-links a, .footer-links a, a[href^="#"]').forEach
             }
         }
     });
+});
+
+// ===== Close mobile menu on window resize =====
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 991) {
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
 });
 
 // ===== Email Button Functionality =====
