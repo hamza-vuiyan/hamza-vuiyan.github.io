@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cipher Nexus — Classical Cryptography Learning Lab</title>
+<link rel="stylesheet" href="cipher.css">
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+<div class="scanlines"></div>
+<div class="grid-overlay"></div>
+
+<div class="app-wrapper">
+
+<!-- ===== HEADER ===== -->
+<header>
+  <h1>Cipher Nexus</h1>
+  <p class="subtitle">Classical Cryptography Learning Lab</p>
+  <p class="intro">
+    Cryptography has shaped history — from Julius Caesar's secret military messages to the
+    unbreakable Vigenère cipher that stumped codebreakers for centuries. Explore five
+    classical encryption algorithms, learn their inner workings, and experiment with
+    interactive encryption and decryption.
+  </p>
+</header>
+
+<!-- ===== CIPHER 1: CAESAR ===== -->
+<section>
+<h2 class="section-title">Caesar Cipher</h2>
+<details class="cipher-card" open>
+<summary>Caesar Cipher</summary>
+<div class="card-content">
+
+<div class="sub-heading">What Is It?</div>
+<p>The Caesar cipher, named after Julius Caesar who used it in his private correspondence around 58 BC, is one of the simplest and earliest known encryption techniques. Each letter in the plaintext is shifted a fixed number of positions down the alphabet. Caesar typically used a shift of 3, making it one of history's first military cryptography tools.</p>
+
+<div class="sub-heading">How It Works</div>
+<p><strong>Step 1:</strong> Choose a shift value (1–25). <strong>Step 2:</strong> For each letter in the plaintext, shift it forward by the shift amount. <strong>Step 3:</strong> Wrap around from Z to A. <strong>Mathematically:</strong> E<sub>n</sub>(x) = (x + n) mod 26. <br><strong>Example:</strong> "HELLO" with shift 3 → "KHOOR". Decryption reverses the shift.</p>
+
+<div class="panels">
+  <div class="panel">
+    <h4>> ENCRYPT</h4>
+    <label for="caesar-pt">Plaintext</label>
+    <input type="text" id="caesar-pt" placeholder="Enter plaintext...">
+    <label for="caesar-shift-e">Shift (1-25)</label>
+    <input type="number" id="caesar-shift-e" value="3" min="1" max="25">
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="caesarEncrypt()">Encrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('caesar-enc-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['caesar-pt','caesar-shift-e','caesar-enc-out'])">Clear</button>
+    </div>
+    <label>Ciphertext</label>
+    <div class="output-box" id="caesar-enc-out"></div>
+  </div>
+  <div class="panel">
+    <h4>> DECRYPT</h4>
+    <label for="caesar-ct">Ciphertext</label>
+    <input type="text" id="caesar-ct" placeholder="Enter ciphertext...">
+    <label for="caesar-shift-d">Shift (1-25)</label>
+    <input type="number" id="caesar-shift-d" value="3" min="1" max="25">
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="caesarDecrypt()">Decrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('caesar-dec-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['caesar-ct','caesar-shift-d','caesar-dec-out'])">Clear</button>
+    </div>
+    <label>Plaintext</label>
+    <div class="output-box" id="caesar-dec-out"></div>
+  </div>
+</div>
+
+<div class="sub-heading">Educational Notes</div>
+<div class="edu-grid">
+  <div class="edu-item"><strong>Advantages</strong><span>Extremely simple to implement and understand; great introductory cipher.</span></div>
+  <div class="edu-item"><strong>Disadvantages</strong><span>Only 25 possible keys — trivial to brute-force; no security against any systematic attack.</span></div>
+  <div class="edu-item"><strong>Security Level</strong><span class="security-low">Very Low</span></div>
+  <div class="edu-item"><strong>Example Uses</strong><span>Ancient military communications; modern puzzles and toys; cryptography education.</span></div>
+  <div class="edu-item"><strong>Interesting Fact</strong><span>Augustus Caesar used a shift of 1 instead of 3, which is even weaker.</span></div>
+  <div class="edu-item"><strong>vs Modern</strong><span>Modern ciphers like AES use 128–256 bit keys — the Caesar cipher has effectively 4.7 bits of key entropy.</span></div>
+</div>
+
+</div>
+</details>
+</section>
+
+<!-- ===== CIPHER 2: PLAYFAIR ===== -->
+<section>
+<h2 class="section-title">Playfair Cipher</h2>
+<details class="cipher-card">
+<summary>Playfair Cipher</summary>
+<div class="card-content">
+
+<div class="sub-heading">What Is It?</div>
+<p>Invented by Charles Wheatstone in 1854 but promoted by Lord Playfair, the Playfair cipher encrypts pairs of letters (digraphs) instead of single characters. It was used by the British military in World War I and by the US Coast Guard during World War II. It was the first literal digraph substitution cipher in history.</p>
+
+<div class="sub-heading">How It Works</div>
+<p><strong>Step 1:</strong> Build a 5×5 matrix using a keyword (I/J share a cell). <strong>Step 2:</strong> Break plaintext into digraphs (insert 'X' between repeated letters; pad odd length with 'X'). <strong>Step 3:</strong> For each digraph: if same row, take letters to the right; if same column, take letters below; otherwise form a rectangle and swap corners. <strong>Example:</strong> Key "PLAYFAIR", plain "HELLO" → "HE LX LO" → matrix encryption produces ciphertext.</p>
+
+<div class="panels">
+  <div class="panel">
+    <h4>> ENCRYPT</h4>
+    <label for="play-pt">Plaintext</label>
+    <input type="text" id="play-pt" placeholder="Enter plaintext...">
+    <label for="play-key-e">Key</label>
+    <input type="text" id="play-key-e" value="PLAYFAIR" placeholder="Keyword...">
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="playfairEncrypt()">Encrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('play-enc-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['play-pt','play-key-e','play-enc-out','play-matrix-e'])">Clear</button>
+    </div>
+    <label>Ciphertext</label>
+    <div class="output-box" id="play-enc-out"></div>
+    <label>Key Matrix</label>
+    <div class="output-box" id="play-matrix-e"></div>
+  </div>
+  <div class="panel">
+    <h4>> DECRYPT</h4>
+    <label for="play-ct">Ciphertext</label>
+    <input type="text" id="play-ct" placeholder="Enter ciphertext...">
+    <label for="play-key-d">Key</label>
+    <input type="text" id="play-key-d" value="PLAYFAIR" placeholder="Keyword...">
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="playfairDecrypt()">Decrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('play-dec-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['play-ct','play-key-d','play-dec-out','play-matrix-d'])">Clear</button>
+    </div>
+    <label>Plaintext</label>
+    <div class="output-box" id="play-dec-out"></div>
+    <label>Key Matrix</label>
+    <div class="output-box" id="play-matrix-d"></div>
+  </div>
+</div>
+
+<div class="sub-heading">Educational Notes</div>
+<div class="edu-grid">
+  <div class="edu-item"><strong>Advantages</strong><span>Resists simple frequency analysis by encrypting digraphs rather than single letters.</span></div>
+  <div class="edu-item"><strong>Disadvantages</strong><span>Still vulnerable to digraph frequency analysis; known-plaintext attacks reveal the matrix.</span></div>
+  <div class="edu-item"><strong>Security Level</strong><span class="security-low">Low</span></div>
+  <div class="edu-item"><strong>Example Uses</strong><span>British WWI communications; US Coast Guard WWII; Boy Scout cryptography training.</span></div>
+  <div class="edu-item"><strong>Interesting Fact</strong><span>The Playfair cipher was rejected by the British Foreign Office as "too complicated" for field use.</span></div>
+  <div class="edu-item"><strong>vs Modern</strong><span>Modern ciphers operate on 128-bit blocks (16+ characters at once), not just bigrams.</span></div>
+</div>
+
+</div>
+</details>
+</section>
+
+<!-- ===== CIPHER 3: HILL ===== -->
+<section>
+<h2 class="section-title">Hill Cipher</h2>
+<details class="cipher-card">
+<summary>Hill Cipher</summary>
+<div class="card-content">
+
+<div class="sub-heading">What Is It?</div>
+<p>Invented by Lester S. Hill in 1929, the Hill cipher was the first polygraphic cipher that could operate on more than three symbols at once using linear algebra. It uses matrix multiplication to transform blocks of plaintext into ciphertext, representing a major mathematical advance in cryptography.</p>
+
+<div class="sub-heading">How It Works</div>
+<p><strong>Step 1:</strong> Convert letters to numbers (A=0...Z=25). <strong>Step 2:</strong> Group into pairs. <strong>Step 3:</strong> Multiply each pair by the 2×2 key matrix (mod 26). <strong>Mathematically:</strong> C = K × P mod 26. <strong>Decryption:</strong> P = K<sup>-1</sup> × C mod 26, where K<sup>-1</sup> is the modular inverse of the determinant times the adjugate. <br><strong>Example key:</strong> [[3,3],[2,5]] with plaintext "HI" → ciphertext "OK".</p>
+
+<div class="panels">
+  <div class="panel">
+    <h4>> ENCRYPT</h4>
+    <label for="hill-pt">Plaintext</label>
+    <input type="text" id="hill-pt" placeholder="Enter plaintext (even length)...">
+    <label>Key Matrix (2×2)</label>
+    <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;">
+      <input type="number" id="hill-a" value="3" min="0" max="25" style="width:60px;">
+      <input type="number" id="hill-b" value="3" min="0" max="25" style="width:60px;">
+      <input type="number" id="hill-c" value="2" min="0" max="25" style="width:60px;">
+      <input type="number" id="hill-d" value="5" min="0" max="25" style="width:60px;">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="hillEncrypt()">Encrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('hill-enc-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['hill-pt','hill-a','hill-b','hill-c','hill-d','hill-enc-out'])">Clear</button>
+    </div>
+    <label>Ciphertext</label>
+    <div class="output-box" id="hill-enc-out"></div>
+  </div>
+  <div class="panel">
+    <h4>> DECRYPT</h4>
+    <label for="hill-ct">Ciphertext</label>
+    <input type="text" id="hill-ct" placeholder="Enter ciphertext (even length)...">
+    <label>Key Matrix (2×2)</label>
+    <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;">
+      <input type="number" id="hill-ad" value="3" min="0" max="25" style="width:60px;">
+      <input type="number" id="hill-bd" value="3" min="0" max="25" style="width:60px;">
+      <input type="number" id="hill-cd" value="2" min="0" max="25" style="width:60px;">
+      <input type="number" id="hill-dd" value="5" min="0" max="25" style="width:60px;">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="hillDecrypt()">Decrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('hill-dec-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['hill-ct','hill-ad','hill-bd','hill-cd','hill-dd','hill-dec-out'])">Clear</button>
+    </div>
+    <label>Plaintext</label>
+    <div class="output-box" id="hill-dec-out"></div>
+  </div>
+</div>
+
+<div class="sub-heading">Educational Notes</div>
+<div class="edu-grid">
+  <div class="edu-item"><strong>Advantages</strong><span>Resists frequency analysis; introduces linear algebra to cryptography; scalable to larger matrices.</span></div>
+  <div class="edu-item"><strong>Disadvantages</strong><span>Vulnerable to known-plaintext attacks; matrix must be invertible mod 26; only linear operations.</span></div>
+  <div class="edu-item"><strong>Security Level</strong><span class="security-low">Low–Medium</span></div>
+  <div class="edu-item"><strong>Example Uses</strong><span>Academic study of linear algebra in cryptography; precursor to modern block ciphers.</span></div>
+  <div class="edu-item"><strong>Interesting Fact</strong><span>The Hill cipher is a direct ancestor of all modern block ciphers including AES.</span></div>
+  <div class="edu-item"><strong>vs Modern</strong><span>Modern ciphers use non-linear substitution boxes (S-boxes) to resist linear and differential cryptanalysis.</span></div>
+</div>
+
+</div>
+</details>
+</section>
+
+<!-- ===== CIPHER 4: MONOALPHABETIC ===== -->
+<section>
+<h2 class="section-title">Monoalphabetic Substitution Cipher</h2>
+<details class="cipher-card">
+<summary>Monoalphabetic Substitution Cipher</summary>
+<div class="card-content">
+
+<div class="sub-heading">What Is It?</div>
+<p>Monoalphabetic substitution ciphers map each letter of the alphabet to a unique substitute letter, creating a one-to-one mapping. Used since ancient times (including the Atbash cipher from Hebrew scripture), these ciphers were once considered unbreakable until frequency analysis was developed by Arab scholars such as Al-Kindi in the 9th century.</p>
+
+<div class="sub-heading">How It Works</div>
+<p><strong>Step 1:</strong> Create a substitution alphabet (a shuffled permutation of A-Z). <strong>Step 2:</strong> Replace each plaintext letter with its corresponding substitute. <strong>Decryption:</strong> Reverse the mapping. <br><strong>Example:</strong> If A→Q, B→W, C→E..., then "ABC" → "QWE". The key space is 26! (over 400 septillion possible keys).</p>
+
+<div class="panels">
+  <div class="panel">
+    <h4>> ENCRYPT</h4>
+    <label for="mono-pt">Plaintext</label>
+    <input type="text" id="mono-pt" placeholder="Enter plaintext...">
+    <label for="mono-key-e">Substitution Alphabet (26 letters)</label>
+    <input type="text" id="mono-key-e" value="QWERTYUIOPASDFGHJKLZXCVBNM" placeholder="26-letter substitution alphabet">
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="generateMonoAlphabet('mono-key-e')">Generate Random</button>
+      <button class="btn btn-primary" onclick="monoEncrypt()">Encrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('mono-enc-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['mono-pt','mono-key-e','mono-enc-out'])">Clear</button>
+    </div>
+    <label>Ciphertext</label>
+    <div class="output-box" id="mono-enc-out"></div>
+  </div>
+  <div class="panel">
+    <h4>> DECRYPT</h4>
+    <label for="mono-ct">Ciphertext</label>
+    <input type="text" id="mono-ct" placeholder="Enter ciphertext...">
+    <label for="mono-key-d">Substitution Alphabet</label>
+    <input type="text" id="mono-key-d" value="QWERTYUIOPASDFGHJKLZXCVBNM" placeholder="Same alphabet used for encryption">
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="monoDecrypt()">Decrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('mono-dec-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['mono-ct','mono-key-d','mono-dec-out'])">Clear</button>
+    </div>
+    <label>Plaintext</label>
+    <div class="output-box" id="mono-dec-out"></div>
+  </div>
+</div>
+
+<div class="sub-heading">Educational Notes</div>
+<div class="edu-grid">
+  <div class="edu-item"><strong>Advantages</strong><span>Huge key space (26! ≈ 2<sup>88</sup>); simple to understand and implement; historically significant.</span></div>
+  <div class="edu-item"><strong>Disadvantages</strong><span>Completely vulnerable to frequency analysis; letter-pattern preservation; no diffusion.</span></div>
+  <div class="edu-item"><strong>Security Level</strong><span class="security-low">Low</span></div>
+  <div class="edu-item"><strong>Example Uses</strong><span>Newspaper puzzles (cryptograms); historical manuscripts; basic encryption education.</span></div>
+  <div class="edu-item"><strong>Interesting Fact</strong><span>The Zodiac Killer's 340-character cipher was a modified monoalphabetic substitution, cracked in 2020 after 51 years.</span></div>
+  <div class="edu-item"><strong>vs Modern</strong><span>Modern ciphers combine substitution with transposition (confusion + diffusion per Shannon's principles).</span></div>
+</div>
+
+</div>
+</details>
+</section>
+
+<!-- ===== CIPHER 5: VIGENÈRE ===== -->
+<section>
+<h2 class="section-title">Vigenère Cipher</h2>
+<details class="cipher-card">
+<summary>Vigenère Cipher</summary>
+<div class="card-content">
+
+<div class="sub-heading">What Is It?</div>
+<p>First described by Giovan Battista Bellaso in 1553 and later misattributed to Blaise de Vigenère, this cipher uses a keyword to apply different Caesar shifts to each letter. It was known as "le chiffre indéchiffrable" (the unbreakable cipher) for over 300 years until Charles Babbage and Friedrich Kasiski cracked it in the 19th century.</p>
+
+<div class="sub-heading">How It Works</div>
+<p><strong>Step 1:</strong> Choose a keyword. <strong>Step 2:</strong> Repeat the keyword to match the plaintext length (keystream). <strong>Step 3:</strong> Shift each plaintext letter by the corresponding keyword letter's position (A=0...Z=25). <strong>Mathematically:</strong> C<sub>i</sub> = (P<sub>i</sub> + K<sub>i</sub>) mod 26. <br><strong>Example:</strong> Plaintext "HELLO", keyword "KEY" → keystream "KEYKE" → ciphertext "RIJVS".</p>
+
+<div class="panels">
+  <div class="panel">
+    <h4>> ENCRYPT</h4>
+    <label for="vig-pt">Plaintext</label>
+    <input type="text" id="vig-pt" placeholder="Enter plaintext...">
+    <label for="vig-key-e">Keyword</label>
+    <input type="text" id="vig-key-e" value="KEY" placeholder="Keyword">
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="vigenereEncrypt()">Encrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('vig-enc-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['vig-pt','vig-key-e','vig-enc-out','vig-ks-e'])">Clear</button>
+    </div>
+    <label>Ciphertext</label>
+    <div class="output-box" id="vig-enc-out"></div>
+    <label>Generated Keystream</label>
+    <div class="output-box" id="vig-ks-e"></div>
+  </div>
+  <div class="panel">
+    <h4>> DECRYPT</h4>
+    <label for="vig-ct">Ciphertext</label>
+    <input type="text" id="vig-ct" placeholder="Enter ciphertext...">
+    <label for="vig-key-d">Keyword</label>
+    <input type="text" id="vig-key-d" value="KEY" placeholder="Keyword">
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="vigenereDecrypt()">Decrypt</button>
+      <button class="btn btn-secondary" onclick="copyResult('vig-dec-out')">Copy</button>
+      <button class="btn btn-danger" onclick="clearPanel(['vig-ct','vig-key-d','vig-dec-out','vig-ks-d'])">Clear</button>
+    </div>
+    <label>Plaintext</label>
+    <div class="output-box" id="vig-dec-out"></div>
+    <label>Generated Keystream</label>
+    <div class="output-box" id="vig-ks-d"></div>
+  </div>
+</div>
+
+<div class="sub-heading">Educational Notes</div>
+<div class="edu-grid">
+  <div class="edu-item"><strong>Advantages</strong><span>Resists simple frequency analysis; uses multiple Caesar shifts; easy to implement with a keyword.</span></div>
+  <div class="edu-item"><strong>Disadvantages</strong><span>Vulnerable to Kasiski examination and Friedman test when keyword is short or reused.</span></div>
+  <div class="edu-item"><strong>Security Level</strong><span class="security-medium">Medium (keyword-length dependent)</span></div>
+  <div class="edu-item"><strong>Example Uses</strong><span>Confederate Civil War communications; European diplomatic cables; modern CTF challenges.</span></div>
+  <div class="edu-item"><strong>Interesting Fact</strong><span>With a truly random key as long as the message, the Vigenère principle becomes a one-time pad — the only mathematically unbreakable cipher.</span></div>
+  <div class="edu-item"><strong>vs Modern</strong><span>Modern stream ciphers like ChaCha20 improve on Vigenère by using non-linear operations and longer state.</span></div>
+</div>
+
+</div>
+</details>
+</section>
+
+<!-- ===== COMPARISON TABLE ===== -->
+<section>
+<h2 class="section-title">Cipher Comparison</h2>
+<div class="cipher-card">
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Cipher</th><th>Type</th><th>Key Requirement</th><th>Difficulty</th><th>Security Level</th></tr>
+</thead>
+<tbody>
+<tr><td>Caesar</td><td>Monoalphabetic</td><td>Single number (shift)</td><td>Very Easy</td><td class="security-low">None</td></tr>
+<tr><td>Playfair</td><td>Polygraphic (digraph)</td><td>Keyword (5×5 matrix)</td><td>Medium</td><td class="security-low">Low</td></tr>
+<tr><td>Hill</td><td>Polygraphic (linear algebra)</td><td>2×2 invertible matrix</td><td>Hard</td><td class="security-low">Low–Medium</td></tr>
+<tr><td>Monoalphabetic</td><td>Substitution (mapping)</td><td>26-letter permutation</td><td>Easy</td><td class="security-low">Low</td></tr>
+<tr><td>Vigenère</td><td>Polyalphabetic</td><td>Keyword (repeated shift)</td><td>Medium</td><td class="security-medium">Medium</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>Cipher Nexus — Classical Cryptography Learning Lab</p>
+  <p style="margin-top:6px;">Built for learning cryptography concepts. Not for securing real communications.</p>
+  <p style="margin-top:6px; opacity:0.6;">&copy; 2026 &middot; Educational Purposes Only &middot; All cipher implementations are for demonstration</p>
+</footer>
+
+</div><!-- /.app-wrapper -->
+
+<!-- ===== TOAST CONTAINER ===== -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="cipher.js"></script>
+</body>
+</html>
